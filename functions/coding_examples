@@ -1,0 +1,89 @@
+# CODING EXAMPLES
+
+# temperature conversion
+import re
+
+
+def convert_temperature(temp, unit):
+    if unit == "C":
+        return temp * 9/5 + 32 # Celsius to Fahrenheit
+    elif unit == "F":
+        return (temp - 32) * 5/9 # Fahrenheit to Celsius
+    else:
+        return None
+    
+# print(convert_temperature(25, 'C'))
+# print(convert_temperature(77, 'F'))
+
+
+# password strength checker
+def is_strong_password(password):
+    if len(password) < 8:
+        return False
+    if not any(char.isdigit() for char in password):
+        return False
+    if not any(char.islower() for char in password):
+        return False
+    if not any(char.isupper() for char in password):
+        return False
+    if not any (char in '!@#$%^&*()_+' for char in password):
+        return False
+    return True
+
+# print(is_strong_password("HelloWorld3!"))
+# print(is_strong_password("badpassword"))
+
+# calculate the total cost of items in a shopping cart
+def calculate_total_cost(cart):
+    total_cost = 0
+    for item in cart:
+        total_cost += item["price"] * item["quantity"]
+    return total_cost
+
+cart = [
+    {"name": "Apple", "price": 0.5, "quantity": 4},
+    {"name": "Banana", "price": 0.3, "quantity": 6},
+    {"name": "Orange", "price": 0.7, "quantity": 3}
+]
+
+total_cost = calculate_total_cost(cart)
+# print(total_cost)
+
+
+# check if a string is a palindrome
+def is_palindrome(s):
+    s= s.lower().replace(" ", "")
+    return s==s[::-1]
+
+# print(is_palindrome("A man a plan a canal Panama"))
+# print(is_palindrome("Hello"))
+
+
+# calculate the factorials of a number using recursion
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+    
+# print(factorial(6))
+
+# count the number of words in a file and their frequency
+def count_word_frequency(file_path):
+    word_count = {}
+    with open(file_path, 'r') as file:
+        for line in file:
+            words = line.split()
+            for word in words:
+                word = word.lower().stipe('.,!?;:"\'')
+                word_count[word] = word_count.get(word, 0) + 1
+    return word_count
+
+
+# validate email address
+def is_valid_email(email):
+    pattern = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.] + $'
+    return re.match(pattern, email) is not None
+
+print(is_valid_email("test@example.com"))
+print(is_valid_email("not-valid"))
