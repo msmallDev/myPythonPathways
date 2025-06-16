@@ -1,0 +1,1 @@
+def take_input()
